@@ -41,7 +41,11 @@ const DashboardNavbar = () => {
         </div>
       </div>
       <div className="me-4" onClick={() => navigate("/mail/inbox")}>
-        {unseen ? <MailIcon className="muiIcon" /> : <DraftsIcon />}
+        {unseen ? (
+          <MailIcon className="mailnotseen" />
+        ) : (
+          <DraftsIcon className="mailseen" />
+        )}
       </div>
       <div onClick={handleLogout} className="me-4 logoutbtn">
         <Logout />

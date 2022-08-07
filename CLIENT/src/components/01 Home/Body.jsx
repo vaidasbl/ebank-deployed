@@ -3,33 +3,25 @@ import BenefitCard from "./BenefitCard";
 
 const Body = () => {
   return (
-    <div className="home-body">
-      <div className="container">
+    <div className="container">
+      <div className="home-body">
         <div className="row">
-          <div className="mb-4 mt-4 body-title">
-            Something benefits something
+          <div className="col-sm-3">
+            {<BenefitCard text={"such innovation"} image={"/doge.jpeg"} />}
           </div>
-          <div className="col-3">
-            {<BenefitCard text={"something innovation"} image={"/bank.png"} />}
-          </div>
-          <div className="col-3">
+          <div className="col-sm-3">
             {
               <BenefitCard
-                text={"leading corporations work with us"}
-                image={"/bank.png"}
+                text={"largest corporations work with us"}
+                image={"/doge.jpeg"}
               />
             }
           </div>
-          <div className="col-3">
-            {<BenefitCard text={"something easy to use"} image={"/bank.png"} />}
+          <div className="col-sm-3">
+            {<BenefitCard text={"customer support wow"} image={"/doge.jpeg"} />}
           </div>
-          <div className="col-3">
-            {
-              <BenefitCard
-                text={"customer support amazing"}
-                image={"/bank.png"}
-              />
-            }
+          <div className="col-sm-3">
+            {<BenefitCard text={"much easy to use"} image={"/doge.jpeg"} />}
           </div>
         </div>
       </div>

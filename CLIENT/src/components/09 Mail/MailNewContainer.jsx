@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import apiEndpoint from "../../endpoint";
-
+import Swal from "sweetalert2";
 import DashboardNavbar from "../03 Dashboard/DashboardNavbar";
-
 import MailView from "./MailView";
+import { useNavigate } from "react-router";
 
 const MailNewContainer = () => {
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.value);
   const [mail, setMail] = useState({
     senderid: user._id,
@@ -31,9 +32,20 @@ const MailNewContainer = () => {
         `${apiEndpoint}/api/bank/users/sendmail`,
         mail
       );
-      console.log(mail);
+      navigate("/mail/sent");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Sent",
+        showConfirmButton: false,
+      });
     } catch (err) {
-      alert(err);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: err.response.data || err,
+        showConfirmButton: false,
+      });
     }
   };
 

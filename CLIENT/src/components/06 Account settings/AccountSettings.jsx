@@ -6,6 +6,7 @@ import { Navigate, useNavigate } from "react-router";
 import { updateInfo } from "../../Reducers/user";
 import DashboardView from "../08 Common Components/DashboardView";
 import apiEndpoint from "../../endpoint";
+import Swal from "sweetalert2";
 
 const AccountSettings = () => {
   const user = useSelector((state) => state.user.value);
@@ -36,12 +37,22 @@ const AccountSettings = () => {
         `${apiEndpoint}/api/bank/users/updateinfo`,
         newInfo
       );
-      console.log(result.data);
       dispatch(
         updateInfo({ username: result.data.username, email: result.data.email })
       );
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Succesfully updated user info",
+        showConfirmButton: false,
+      });
     } catch (err) {
-      alert(err);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: err.response.data || err,
+        showConfirmButton: false,
+      });
     }
   };
 

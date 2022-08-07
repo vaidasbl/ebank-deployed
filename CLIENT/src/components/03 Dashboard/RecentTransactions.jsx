@@ -25,19 +25,23 @@ const RecentTransactions = () => {
 
   return (
     <div className="recenttransactions ">
-      <div className="subtitle mb-2">Recent transactions</div>
-      {transactions?.map((t) => (
-        <div key={t.date} className="row">
-          <div
-            className={t.income ? "col-3 income-true" : "col-3 income-false"}
-          >
-            {t.income ? "+" : "-"} {t.amount} {t.currency}
+      <div className="subtitle">Recent transactions</div>
+      <hr className="hrhr1" />
+      {transactions.length === 0 ? (
+        <div> no recent transactions</div>
+      ) : (
+        transactions?.map((t) => (
+          <div key={t.date} className="row">
+            <div
+              className={t.income ? "col-3 income-true" : "col-3 income-false"}
+            >
+              {t.income ? "+" : "-"} {t.amount} {t.currency}
+            </div>
+            <div className="col-3 ">{t.who}</div>
+            <div className="col-6 ">{t.date}</div>
           </div>
-          <div className="col-3 ">{t.who}</div>
-          <div className="col-6 ">{t.date}</div>
-        </div>
-      ))}
-      <div className="mt-2"></div>
+        ))
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import apiEndpoint from "../../endpoint";
+import Swal from "sweetalert2";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -24,17 +25,26 @@ const RegisterForm = () => {
     e.preventDefault();
     try {
       await axios.post(`${apiEndpoint}/api/bank/users/new`, info);
-
-      alert("Succesfully created an account");
       navigate("/");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Successfully registered",
+        showConfirmButton: false,
+      });
     } catch (err) {
-      alert(err.response.data);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: err.response.data || err,
+        showConfirmButton: false,
+      });
     }
   };
 
   return (
-    <div className="titlecontainer container">
-      <div className="row summarytitle">Register</div>
+    <div className="mt-4">
+      <div className="title">Register</div>
 
       <form onSubmit={handleSubmit}>
         <div className="mt-4">
@@ -70,20 +80,22 @@ const RegisterForm = () => {
           />
         </div>
 
-        <div className="row mt-4">
-          <div className="col-6">
-            <button
-              type="button"
-              onClick={() => navigate("/")}
-              className="myBtn4"
-            >
-              Back
-            </button>
-          </div>
-          <div className="col-6">
-            <button disabled={empty} type="submit" className="myBtn4">
-              Proceed
-            </button>
+        <div className="mtop-125">
+          <div className="row">
+            <div className="col-6">
+              <button
+                type="button"
+                onClick={() => navigate("/")}
+                className="myBtn4"
+              >
+                Back
+              </button>
+            </div>
+            <div className="col-6">
+              <button disabled={empty} type="submit" className="myBtn4">
+                Proceed
+              </button>
+            </div>
           </div>
         </div>
       </form>

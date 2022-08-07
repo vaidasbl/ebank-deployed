@@ -147,9 +147,12 @@ button:disabled {
 
 .home-body {
   background-color: rgb(255, 255, 255);
-  height: 400px;
+  height: fit-content;
+  min-width: 400px;
   text-align: center;
   font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .body-title {
@@ -161,9 +164,9 @@ button:disabled {
   height: 150px;
   margin-top: 15px;
 }
-
-.cardtitle {
-  height: 75px;
+.card-text {
+  margin-bottom: 20px;
+  height: 25px;
 }
 
 .footer-container {
@@ -173,7 +176,6 @@ button:disabled {
 }
 
 .footer-text {
-  text-align: center;
   padding-top: 150px;
 }
 
@@ -184,9 +186,10 @@ button:disabled {
   margin: 0 auto;
   width: 400px;
   margin-top: 20vh;
+
   height: 400px;
   background-color: #ffffff;
-  align-items: center;
+
   justify-content: center;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.075) 0px 15px 25px,
@@ -231,6 +234,7 @@ button:disabled {
 
 .dashboardnavbar {
   display: flex;
+  min-width: 500px;
   text-align: center;
   font-size: 18px;
   background-color: rgb(255, 255, 255);
@@ -246,8 +250,16 @@ button:disabled {
 .navoption {
   display: flex;
   flex-direction: row;
+  transition: color 1s ease-in-out;
+  flex: 1 1;
 }
-.navoption:before {
+
+.navoption:hover {
+  cursor: pointer;
+  color: #145796;
+  transition: color 0.5s ease-in-out;
+}
+/* .navoption:before {
   content: "";
   flex: 1 1;
   border-bottom: 1px solid;
@@ -280,7 +292,7 @@ button:disabled {
 .navoption:hover:before {
   transition: opacity 1s ease;
   opacity: 100%;
-}
+} */
 
 .navoption:hover {
   cursor: pointer;
@@ -338,7 +350,7 @@ button:disabled {
 }
 
 .recenttransactions {
-  height: 160px;
+  height: 170px;
   margin-top: 15px;
 
   border: 1px solid rgba(0, 82, 189, 0.116);
@@ -346,9 +358,6 @@ button:disabled {
 
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-}
-
-.quickmenu {
 }
 
 .subtitle {
@@ -528,25 +537,39 @@ button:disabled {
 }
 
 .hrhr1 {
+  margin-top: 0px;
   background-image: linear-gradient(to right, white, rgb(82, 82, 82), white);
 }
 
 .body-container {
-  height: 340px;
+  height: 385px;
 }
 
 .body-container-with-prefooter {
-  height: 270px;
+  height: 315px;
 }
 
 .align-center {
   justify-content: center;
 }
 
-.margin {
+.mtop-50 {
   margin-top: 50px;
 }
-.prefooter {
+.mtop-100 {
+  margin-top: 100px;
+}
+
+.mtop-125 {
+  margin-top: 125px;
+}
+
+.mtop-150 {
+  margin-top: 150px;
+}
+
+.mtop-175 {
+  margin-top: 175px;
 }
 
 .mailbtnpassive {
@@ -596,17 +619,25 @@ textarea {
   padding: 10px;
 }
 
-.muiIcon {
+.mailnotseen {
   color: orange;
   cursor: pointer;
 }
 
-.muiIcon:hover {
+.mailnotseen:hover {
   color: rgb(252, 176, 35);
 }
 
+.mailseen {
+  cursor: pointer;
+}
+
+.mailseen:hover {
+  color: #145796;
+}
+
 .mail-body-container {
-  height: 300px;
+  height: 350px;
   overflow-y: auto;
 
   border-radius: 15px;

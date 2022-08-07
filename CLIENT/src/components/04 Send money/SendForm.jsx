@@ -7,6 +7,7 @@ import WalletContext from "../../Reducers/WalletContext";
 import ContactsSelect from "../08 Common Components/ContactsSelect";
 import CurrencySelectDropdown from "../08 Common Components/CurrencySelectDropdown";
 import DashboardView from "../08 Common Components/DashboardView";
+import Swal from "sweetalert2";
 
 const SendForm = () => {
   const { refreshWallet } = useContext(WalletContext);
@@ -41,13 +42,25 @@ const SendForm = () => {
           request
         );
         refreshWallet();
-        alert(result.data);
+        console.log(result.data);
+        console.log(request);
+
         navigate("/");
       } catch (err) {
-        alert(err.response.data);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.response.data || err,
+          showConfirmButton: false,
+        });
       }
     } else {
-      alert("Recipient and amount cannot be empty");
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Recipient or amount cannot be empty",
+        showConfirmButton: false,
+      });
     }
   };
 

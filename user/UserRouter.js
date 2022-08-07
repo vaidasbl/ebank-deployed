@@ -103,7 +103,7 @@ router.post("/login", async (req, res) => {
       });
       return;
     } else {
-      res.send({ success: false });
+      res.status(400).send("Username or password is incorrect");
       return;
     }
   } catch (err) {
@@ -177,9 +177,6 @@ router.put("/send", async (req, res) => {
       userId: sender._id,
     });
     const recipient = await User.findOne({ username: req.body.recipient });
-    const recipientTransactionsObj = await Transactions.findOne({
-      userId: recipient._id,
-    });
 
     if (!recipient) {
       res
@@ -191,6 +188,9 @@ router.put("/send", async (req, res) => {
     ) {
       res.status(400).send("Not enough money in the account");
     } else {
+      const recipientTransactionsObj = await Transactions.findOne({
+        userId: recipient._id,
+      });
       const recipientMail = await Mail.findOne({ userId: recipient._id });
       const amountReceived = exchange(
         req.body.amount,
@@ -533,7 +533,7 @@ router.get("/:userid/inbox", async (req, res) => {
       }
     }
 
-    res.send(inbox);
+    res.send(inbox.reverse());
   } catch (err) {
     res.send(err);
   }

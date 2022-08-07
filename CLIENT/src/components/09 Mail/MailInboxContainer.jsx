@@ -35,20 +35,24 @@ const MailInboxContainer = () => {
 
       <MailView withContainer={true}>
         <div className="container gap">
-          {inbox.map((m) => (
-            <div
-              key={m._id}
-              className={m.seen ? "row mailrow " : "row mailrow unseen"}
-              onClick={() => navigate(`/mail/${m._id}`)}
-            >
-              <div className="col-1">
-                {m.seen ? "" : <NavigateNextIcon className="muiIcon" />}
+          {inbox.length === 0 ? (
+            <div>inbox is empty</div>
+          ) : (
+            inbox.map((m) => (
+              <div
+                key={m._id}
+                className="row mailrow"
+                onClick={() => navigate(`/mail/${m._id}`)}
+              >
+                <div className="col-1">
+                  {m.seen ? "" : <NavigateNextIcon className="mailnotseen" />}
+                </div>
+                <div className="col-3 align-left ">{m.who}</div>
+                <div className="col-5">{m.subject}</div>
+                <div className="col-3">{m.date}</div>
               </div>
-              <div className="col-3 align-left ">{m.who}</div>
-              <div className="col-5">{m.subject}</div>
-              <div className="col-3">{m.date}</div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </MailView>
     </div>

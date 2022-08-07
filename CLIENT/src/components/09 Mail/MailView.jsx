@@ -44,12 +44,13 @@ function MailView({ children, withContainer }) {
             </button>
           </div>
         </div>
-        <div className={withContainer ? "mt-4 mail-body-container" : "mt-4"}>
+        <hr className="hrhr1" />
+        <div className={withContainer ? "mt-4 mail-body-container" : "mt-3"}>
           {children}
         </div>
 
         <div>
-          <div className="row mt-3">
+          <div className="row mt-2">
             <div className="col-6 align-left">
               <button
                 type="button"

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import apiEndpoint from "../../endpoint";
 import { login } from "../../Reducers/user";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -28,11 +29,14 @@ const LoginForm = () => {
           })
         );
         navigate("/");
-      } else {
-        alert("Login denied");
       }
     } catch (err) {
-      console.log(err);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: err.response.data || err,
+        showConfirmButton: false,
+      });
     }
   };
 
@@ -45,8 +49,8 @@ const LoginForm = () => {
     });
   };
   return (
-    <div>
-      <h6 className="title">Login</h6>
+    <div className="mt-4">
+      <div className="title">Login</div>
 
       <form onSubmit={handleSubmit}>
         <div className="mt-4">
@@ -70,8 +74,8 @@ const LoginForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="mt-40">
-          <div className="row ">
+        <div className="mtop-175">
+          <div className="row">
             <div className="col-6">
               <button
                 type="button"

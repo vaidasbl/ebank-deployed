@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="container">
-        <div className="row  align-between">
+        <div className="row align-between">
           <div className="col-2">
             <button className="myBtn3" onClick={() => navigate("/")}>
               LOGO
