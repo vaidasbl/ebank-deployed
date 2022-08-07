@@ -9,7 +9,7 @@ function MailView({ children, withContainer }) {
       <div className="container">
         <div className="summarytitle  mt-4">Mail</div>
 
-        <div className="row  mt-4">
+        <div className="row mt-4 mb-3">
           <div className="col-3 ">
             <button
               className={

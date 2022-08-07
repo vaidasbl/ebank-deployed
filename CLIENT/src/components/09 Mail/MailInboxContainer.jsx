@@ -34,7 +34,7 @@ const MailInboxContainer = () => {
       <DashboardNavbar />
 
       <MailView withContainer={true}>
-        <div className="container gap">
+        <div className="container gap mt-2">
           {inbox.length === 0 ? (
             <div>inbox is empty</div>
           ) : (

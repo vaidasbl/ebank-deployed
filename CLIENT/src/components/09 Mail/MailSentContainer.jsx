@@ -33,19 +33,23 @@ const MailSentContainer = () => {
       <DashboardNavbar />
 
       <MailView withContainer={true}>
-        <div className="container gap">
-          {sent.map((m) => (
-            <div
-              key={m._id}
-              className="row mailrow"
-              onClick={() => navigate(`/mail/${m._id}`)}
-            >
-              <div className="col-3">{m.who}</div>
-              <div className="col-3">{m.subject}</div>
+        <div className="container gap mt-2">
+          {sent.length === 0 ? (
+            <div>empty</div>
+          ) : (
+            sent.map((m) => (
+              <div
+                key={m._id}
+                className="row mailrow"
+                onClick={() => navigate(`/mail/${m._id}`)}
+              >
+                <div className="col-3">{m.who}</div>
+                <div className="col-3">{m.subject}</div>
 
-              <div className="col-6">{m.date}</div>
-            </div>
-          ))}
+                <div className="col-6">{m.date}</div>
+              </div>
+            ))
+          )}
         </div>
       </MailView>
     </div>
